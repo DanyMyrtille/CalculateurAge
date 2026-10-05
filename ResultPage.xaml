@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CalculateurAge.ResultPage" Title="Résultat">
-    <VerticalStackLayout Padding="24" Spacing="16">
-        <Label x:Name="HelloLabel" FontSize="26" FontAttributes="Bold" />
-        <Label x:Name="SummaryLabel" FontSize="22" />
-        <Label x:Name="NextLabel" />
-    </VerticalStackLayout>
+             xmlns:vm="clr-namespace:CalculateurAge.ViewModels"
+             x:Class="CalculateurAge.ResultPage" x:DataType="vm:ResultViewModel" Title="Résultat">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="{Binding Hello}" FontSize="26" FontAttributes="Bold" />
+            <Label Text="{Binding Summary}" FontSize="22" />
+            <Label Text="{Binding NextBirthday}" />
+            <!--EXTRA-->
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
