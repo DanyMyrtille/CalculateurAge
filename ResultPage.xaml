@@ -9,7 +9,7 @@
             <Label Text="{Binding Summary}" FontSize="22" />
             <Label Text="{Binding NextBirthday}" />
             <Label Text="{Binding Details}" />
-            <!--EXTRA-->
+            <Button Text="Partager mon âge" Command="{Binding ShareCommand}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

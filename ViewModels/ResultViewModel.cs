@@ -1,3 +1,4 @@
+using System.Windows.Input;
 using CalculateurAge.Services;
 
 namespace CalculateurAge.ViewModels;
@@ -12,6 +13,15 @@ public class ResultViewModel : BaseViewModel, IQueryAttributable
     public string NextBirthday { get => _nextBirthday; set => Set(ref _nextBirthday, value); }
 
     public string Details { get => _details; set => Set(ref _details, value); }
+
+    public ICommand ShareCommand { get; }
+
+    public ResultViewModel() => ShareCommand = new Command(async () =>
+        await Share.Default.RequestAsync(new ShareTextRequest
+        {
+            Title = "Mon âge",
+            Text = $"{Hello} J'ai {Summary}. {NextBirthday}"
+        }));
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
