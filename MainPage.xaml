@@ -11,7 +11,15 @@
             <DatePicker Date="{Binding BirthDate}" MaximumDate="{Binding Today}" />
             <Button Text="Calculer" Command="{Binding CalculateCommand}" />
             <Label Text="{Binding Error}" TextColor="Red" />
-            <!--EXTRA-->
+            <Label Text="Historique" FontAttributes="Bold" />
+            <CollectionView ItemsSource="{Binding History}" HeightRequest="180">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <Label Text="{Binding .}" Padding="0,4" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Effacer l'historique" Command="{Binding ClearHistoryCommand}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
