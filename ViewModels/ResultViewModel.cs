@@ -11,7 +11,6 @@ public class ResultViewModel : BaseViewModel, IQueryAttributable
     public string Hello { get => _hello; set => Set(ref _hello, value); }
     public string Summary { get => _summary; set => Set(ref _summary, value); }
     public string NextBirthday { get => _nextBirthday; set => Set(ref _nextBirthday, value); }
-
     public string Details { get => _details; set => Set(ref _details, value); }
 
     public ICommand ShareCommand { get; }
@@ -33,7 +32,6 @@ public class ResultViewModel : BaseViewModel, IQueryAttributable
         NextBirthday = r.DaysUntilBirthday == 0
             ? "🎉 Joyeux anniversaire !"
             : $"Prochain anniversaire dans {r.DaysUntilBirthday} jour(s)";
-    }
         Details = $"Jours vécus : {r.TotalDays:N0}\nNé(e) un {r.BirthWeekday}\nSigne : {r.Zodiac}";
     }
 }
