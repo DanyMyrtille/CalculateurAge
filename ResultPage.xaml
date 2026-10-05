@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculateurAge.ResultPage" Title="Résultat">
+    <VerticalStackLayout Padding="24" Spacing="16">
+        <Label x:Name="HelloLabel" FontSize="26" FontAttributes="Bold" />
+        <Label x:Name="SummaryLabel" FontSize="22" />
+        <Label x:Name="NextLabel" />
+    </VerticalStackLayout>
+</ContentPage>

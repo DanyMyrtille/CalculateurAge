@@ -1,8 +1,5 @@
-using CalculateurAge.Services;
-
 namespace CalculateurAge;
 
-// Phase A : tout est géré en code-behind
 public partial class MainPage : ContentPage
 {
     public MainPage()
@@ -12,12 +9,19 @@ public partial class MainPage : ContentPage
         BirthPicker.Date = new DateTime(2000, 1, 1);
     }
 
-    private void OnCalculate(object? sender, EventArgs e)
+    // Phase B : navigation vers la 2e page avec deux paramètres (nom, date)
+    private async void OnCalculate(object? sender, EventArgs e)
     {
-        var r = AgeCalculator.Compute(BirthPicker.Date, DateTime.Today);
-        ResultLabel.Text = $"{r.Years} an(s), {r.Months} mois, {r.Days} jour(s)";
-        NextLabel.Text = r.DaysUntilBirthday == 0
-            ? "🎉 Joyeux anniversaire !"
-            : $"Prochain anniversaire dans {r.DaysUntilBirthday} jour(s)";
+        if (string.IsNullOrWhiteSpace(NameEntry.Text))
+        {
+            await DisplayAlert("Champ requis", "Veuillez saisir votre nom.", "OK");
+            return;
+        }
+        var parameters = new Dictionary<string, object>
+        {
+            ["name"] = NameEntry.Text.Trim(),
+            ["birth"] = BirthPicker.Date
+        };
+        await Shell.Current.GoToAsync(nameof(ResultPage), parameters);
     }
 }
